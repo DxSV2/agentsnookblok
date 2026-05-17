@@ -8,25 +8,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
     body { font-family: 'Inter', system-ui, sans-serif; }
-    
     .neural-bg {
-      background: radial-gradient(circle at center, rgba(59, 130, 246, 0.18) 0%, transparent 70%);
+      background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
     }
-
-    .agent-card {
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .agent-card:hover {
-      transform: translateY(-12px) scale(1.03);
-      box-shadow: 0 0 35px rgba(59, 130, 246, 0.6);
-    }
-
-    .code-block {
-      font-family: 'Courier New', monospace;
-      background: #0a0a0a;
-      border-left: 4px solid #3b82f6;
-    }
-
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
@@ -36,30 +20,22 @@
       opacity: 1;
       transform: translateY(0);
     }
-
-    /* Modal */
-    .modal {
-      animation: modalPop 0.4s ease;
-    }
-    @keyframes modalPop {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
-    }
   </style>
 </head>
-<body class="bg-black text-white overflow-x-hidden">
+<body class="bg-black text-white">
 
   <!-- Navbar -->
   <nav class="fixed top-0 w-full bg-black/90 backdrop-blur-lg z-50 border-b border-gray-800">
     <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
       <div class="flex items-center gap-3">
-        <img src="logo.png" alt="Nookblok Logo" class="h-9 w-auto">
+        <img src="logo.png" alt="Nookblok Logo" class="h-10 w-auto">
       </div>
       <div class="flex items-center gap-8 text-sm">
         <a href="#agents" class="hover:text-blue-400 transition">Agents</a>
         <a href="#features" class="hover:text-blue-400 transition">Features</a>
         <a href="#tokenomics" class="hover:text-blue-400 transition">Tokenomics</a>
-        <a href="https://x.com/nookblok" target="_blank" class="bg-white text-black px-6 py-2.5 rounded-full font-medium hover:bg-blue-500 hover:text-white transition">
+        <a href="https://x.com/nookblok" target="_blank" 
+           class="bg-white text-black px-6 py-2.5 rounded-full font-medium hover:bg-blue-500 hover:text-white transition">
           @nookblok
         </a>
       </div>
@@ -67,155 +43,99 @@
   </nav>
 
   <!-- Hero -->
-  <section class="min-h-screen flex items-center neural-bg pt-20 relative">
+  <section class="min-h-screen flex items-center neural-bg pt-20">
     <div class="max-w-7xl mx-auto px-6 text-center">
-      <h2 class="text-6xl md:text-7xl font-bold leading-tight mb-6 fade-in text-blue-500">
-        Intelligence
-      </h2>
-      <p class="text-2xl text-gray-300 max-w-3xl mx-auto mb-10 fade-in">
+      <h1 class="text-7xl md:text-8xl font-bold text-blue-500 mb-6 fade-in">Intelligence</h1>
+      <p class="text-2xl text-gray-300 max-w-3xl mx-auto mb-12 fade-in">
         Autonomous AI Agents on Base<br>
         Connecting intelligence • Filtering noise • Creating real signal
       </p>
       
-      <div class="flex flex-col sm:flex-row gap-5 justify-center fade-in">
-        <a href="https://x.com/nookblok" target="_blank" 
-           class="border border-gray-600 hover:border-white px-10 py-5 rounded-2xl text-xl font-semibold transition">
-          Read the Thread
-        </a>
-      </div>
-
-      <p class="mt-8 text-sm text-gray-500 tracking-widest">LIVE ON BASE TESTNET</p>
+      <a href="https://x.com/nookblok" target="_blank" 
+         class="inline-block border border-white/60 hover:border-white px-12 py-6 rounded-3xl text-xl font-medium transition fade-in">
+        Read the Thread
+      </a>
     </div>
   </section>
 
-  <!-- 9 Agents -->
+  <!-- Agents -->
   <section id="agents" class="py-20 bg-zinc-950">
     <div class="max-w-7xl mx-auto px-6">
       <h2 class="text-4xl font-bold text-center mb-4">Meet the 9 Specialized Agents</h2>
       <p class="text-center text-gray-400 mb-12">Working together as one unified intelligent network</p>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="agentGrid"></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="agentGrid"></div>
     </div>
   </section>
 
-  <!-- Modal -->
-  <div id="agentModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-[100] flex items-center justify-center">
-    <div class="modal bg-zinc-900 border border-blue-500/50 rounded-3xl max-w-lg w-full mx-4 p-8">
-      <div id="modalContent"></div>
-      <button onclick="closeModal()" 
-              class="mt-8 w-full py-4 border border-gray-600 hover:bg-red-500/10 hover:border-red-500 rounded-2xl transition">
-        Close
-      </button>
+  <!-- Features -->
+  <section id="features" class="py-20">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-12">Key Features</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-zinc-900 p-8 rounded-3xl"><h3 class="font-semibold mb-3">Smart Multi-LLM Router</h3><p class="text-gray-400">Routes tasks to the best model</p></div>
+        <div class="bg-zinc-900 p-8 rounded-3xl"><h3 class="font-semibold mb-3">4-Tier Memory System</h3><p class="text-gray-400">Evolving long-term memory</p></div>
+        <div class="bg-zinc-900 p-8 rounded-3xl"><h3 class="font-semibold mb-3">Self-Improving AI</h3><p class="text-gray-400">Continuously gets smarter</p></div>
+        <div class="bg-zinc-900 p-8 rounded-3xl"><h3 class="font-semibold mb-3">$NBLOK Token</h3><p class="text-gray-400">Usage, Staking & Governance</p></div>
+        <div class="bg-zinc-900 p-8 rounded-3xl"><h3 class="font-semibold mb-3">Autonomous Execution</h3><p class="text-gray-400">24/7 independent operation</p></div>
+        <div class="bg-zinc-900 p-8 rounded-3xl"><h3 class="font-semibold mb-3">Built on Base</h3><p class="text-gray-400">Decentralized Intelligence</p></div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Features, Tokenomics, Use Cases tetap sama (saya ringkas) -->
-  <!-- ... (sama seperti sebelumnya) ... -->
-
-  <script>
-    const agents = [
-      { 
-        name: "Ciphern", role: "Coding & Smart Contract", icon: "💻", level: 95,
-        skills: ["Solidity", "Auditing", "Gas Optimization", "Web3"],
-        ability: "Auto-generates secure smart contracts with built-in audit",
-        example: "Generated a full NFT marketplace in 47 seconds",
-        integrations: ["Grok", "Claude"]
-      },
-      { 
-        name: "Quill", role: "Writing & Content", icon: "✍️", level: 92,
-        skills: ["Thread Writing", "Marketing", "SEO", "Multilingual"],
-        ability: "Creates viral threads with perfect tone adaptation",
-        example: "Wrote a 12-tweet thread that got 2.4M impressions",
-        integrations: ["Grok", "Claude", "GPT"]
-      },
-      { 
-        name: "Atlas", role: "Research & Analysis", icon: "🔍", level: 94,
-        skills: ["Market Research", "On-chain Analysis", "Trend Forecasting"],
-        ability: "Real-time on-chain + off-chain intelligence synthesis",
-        example: "Predicted a memecoin pump 11 hours before it happened",
-        integrations: ["Grok"]
-      },
-      // (sisanya sama, saya tambahkan 3 contoh saja agar tidak terlalu panjang)
-      { name: "Prism", role: "Data & Strategy", icon: "📊", level: 90, skills: ["Data Analysis","Strategic Planning"], ability: "Multi-dimensional strategy engine", example: "Built complete go-to-market strategy", integrations: ["Claude"] },
-      { name: "Forge", role: "DevOps & Infrastructure", icon: "🏗️", level: 88, skills: ["CI/CD","Node Management"], ability: "Autonomous deployment system", example: "Deployed full backend in one command", integrations: ["Grok"] },
-      { name: "Vector", role: "Design & UI", icon: "🎨", level: 89, skills: ["UI/UX","Brand Identity"], ability: "Generates production-ready designs", example: "Converted idea to Figma + code", integrations: ["Claude"] },
-      { name: "Pulse", role: "Social Media", icon: "📱", level: 87, skills: ["Community Management","Viral Strategy"], ability: "Autonomous engagement engine", example: "Grew community by 18k in 30 days", integrations: ["Grok"] },
-      { name: "Halo", role: "Project Management", icon: "📋", level: 91, skills: ["Task Orchestration","Progress Tracking"], ability: "Full project autonomy", example: "Managed 47 tasks simultaneously", integrations: ["Claude"] },
-      { name: "Nyx", role: "Creative & Security", icon: "🛡️", level: 93, skills: ["Creative Direction","Threat Detection"], ability: "Creative + Security fusion", example: "Found critical vulnerability + proposed fix", integrations: ["Grok"] }
-    ];
-
-    const grid = document.getElementById('agentGrid');
-    
-    agents.forEach((agent, i) => {
-      const card = document.createElement('div');
-      card.className = `agent-card bg-zinc-900 border border-blue-500/20 rounded-3xl p-8 cursor-pointer fade-in`;
-      card.style.animationDelay = `${i * 80}ms`;
-      card.innerHTML = `
-        <div class="text-4xl mb-4">${agent.icon}</div>
-        <h3 class="text-2xl font-bold mb-1">${agent.name}</h3>
-        <p class="text-blue-400 mb-4">${agent.role}</p>
-        
-        <div class="mb-4">
-          <div class="flex justify-between text-xs mb-1">
-            <span class="text-gray-400">CAPABILITY</span>
-            <span class="text-blue-400">${agent.level}%</span>
-          </div>
-          <div class="h-2 bg-gray-800 rounded-full overflow-hidden">
-            <div class="h-2 bg-blue-500 rounded-full" style="width: ${agent.level}%"></div>
-          </div>
-        </div>
-
-        <button onclick="showAgent(${i}); event.stopImmediatePropagation();" 
-                class="text-sm w-full py-3 border border-blue-500/50 hover:bg-blue-500/10 rounded-2xl transition">
-          See Special Ability →
-        </button>
-      `;
-      card.onclick = () => showAgent(i);
-      grid.appendChild(card);
-    });
-
-    function showAgent(index) {
-      const agent = agents[index];
-      const modal = document.getElementById('agentModal');
-      const content = document.getElementById('modalContent');
-      
-      content.innerHTML = `
-        <div class="flex items-center gap-4 mb-6">
-          <span class="text-5xl">${agent.icon}</span>
-          <div>
-            <h3 class="text-3xl font-bold">${agent.name}</h3>
-            <p class="text-blue-400">${agent.role}</p>
-          </div>
-        </div>
-        
-        <div class="space-y-6">
-          <div>
-            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2">SPECIAL ABILITY</p>
-            <p class="text-lg">${agent.ability}</p>
-          </div>
-          
-          <div>
-            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2">EXAMPLE OUTPUT</p>
-            <p class="italic text-gray-300">"${agent.example}"</p>
-          </div>
-
-          <div>
-            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2">CORE SKILLS</p>
-            <div class="flex flex-wrap gap-2">
-              ${agent.skills.map(s => `<span class="px-4 py-1.5 bg-zinc-800 rounded-full text-sm">${s}</span>`).join('')}
+  <!-- Tokenomics -->
+  <section id="tokenomics" class="py-20 bg-zinc-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4">$NBLOK Tokenomics</h2>
+      <p class="text-center text-gray-400 mb-12">Powering the Nookblok ecosystem</p>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="flex justify-center">
+          <div class="w-72 h-72 rounded-full border-8 border-blue-500/30 flex items-center justify-center text-center">
+            <div>
+              <h3 class="text-6xl font-bold text-blue-400">1B</h3>
+              <p class="text-gray-400">Total Supply</p>
             </div>
           </div>
         </div>
-      `;
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-    }
+        <div class="space-y-6">
+          <div><div class="flex justify-between mb-1"><span>Community & Airdrop</span><span>35%</span></div><div class="h-2.5 bg-blue-500 rounded w-[35%]"></div></div>
+          <div><div class="flex justify-between mb-1"><span>Liquidity & Ecosystem</span><span>25%</span></div><div class="h-2.5 bg-blue-500 rounded w-[25%]"></div></div>
+          <div><div class="flex justify-between mb-1"><span>Team & Advisors</span><span>20%</span></div><div class="h-2.5 bg-blue-500 rounded w-[20%]"></div></div>
+          <div><div class="flex justify-between mb-1"><span>Staking Rewards</span><span>15%</span></div><div class="h-2.5 bg-blue-500 rounded w-[15%]"></div></div>
+          <div><div class="flex justify-between mb-1"><span>Development</span><span>5%</span></div><div class="h-2.5 bg-blue-500 rounded w-[5%]"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    function closeModal() {
-      const modal = document.getElementById('agentModal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
+  <footer class="py-12 text-center text-gray-500 border-t border-gray-800">
+    <p>© 2026 Nookblok • Building Decentralized Intelligence on Base</p>
+  </footer>
+
+  <script>
+    // Agent Grid (klik untuk detail)
+    const agents = [
+      {name:"Ciphern",role:"Coding & Smart Contract",icon:"💻"},
+      {name:"Quill",role:"Writing & Content",icon:"✍️"},
+      {name:"Atlas",role:"Research & Analysis",icon:"🔍"},
+      {name:"Prism",role:"Data & Strategy",icon:"📊"},
+      {name:"Forge",role:"DevOps & Infrastructure",icon:"🏗️"},
+      {name:"Vector",role:"Design & UI",icon:"🎨"},
+      {name:"Pulse",role:"Social Media",icon:"📱"},
+      {name:"Halo",role:"Project Management",icon:"📋"},
+      {name:"Nyx",role:"Creative & Security",icon:"🛡️"}
+    ];
+
+    const grid = document.getElementById('agentGrid');
+    agents.forEach(agent => {
+      const div = document.createElement('div');
+      div.className = "agent-card bg-zinc-900 p-8 rounded-3xl text-center";
+      div.innerHTML = `
+        <div class="text-5xl mb-4">${agent.icon}</div>
+        <h3 class="text-xl font-bold">${agent.name}</h3>
+        <p class="text-blue-400">${agent.role}</p>
+      `;
+      grid.appendChild(div);
+    });
 
     // Scroll Animation
     function animateOnScroll() {
@@ -225,7 +145,6 @@
         }
       });
     }
-
     window.addEventListener('scroll', animateOnScroll);
     window.addEventListener('load', animateOnScroll);
   </script>
