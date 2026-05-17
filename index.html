@@ -5,11 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nookblok • Decentralized Intelligence</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
     body { font-family: 'Inter', system-ui, sans-serif; }
+    
     .neural-bg {
       background: radial-gradient(circle at center, rgba(59, 130, 246, 0.18) 0%, transparent 70%);
     }
+
+    .agent-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .agent-card:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 0 35px rgba(59, 130, 246, 0.5);
+    }
+
     .fade-in {
       opacity: 0;
       transform: translateY(30px);
@@ -21,36 +32,117 @@
     }
   </style>
 </head>
-<body class="bg-black text-white">
+<body class="bg-black text-white overflow-x-hidden">
 
+  <!-- Navbar -->
   <nav class="fixed top-0 w-full bg-black/95 backdrop-blur-lg z-50 border-b border-gray-800">
     <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-      <img src="logo.png" alt="Nookblok" class="h-10">
-      <div class="flex gap-8 text-sm">
-        <a href="#agents" class="hover:text-blue-400">Agents</a>
-        <a href="#features" class="hover:text-blue-400">Features</a>
-        <a href="#tokenomics" class="hover:text-blue-400">Tokenomics</a>
-        <a href="#usecases" class="hover:text-blue-400">Use Cases</a>
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="Nookblok Logo" class="h-10 w-auto">
+      </div>
+
+      <!-- Menu -->
+      <div class="flex items-center gap-8 text-sm">
+        <a href="#agents" class="hover:text-blue-400 transition">Agents</a>
+        <a href="#features" class="hover:text-blue-400 transition">Features</a>
+        <a href="#tokenomics" class="hover:text-blue-400 transition">Tokenomics</a>
+        <a href="#usecases" class="hover:text-blue-400 transition">Use Cases</a>
       </div>
     </div>
   </nav>
 
-  <section class="min-h-screen flex items-center neural-bg pt-20">
-    <div class="max-w-5xl mx-auto px-6 text-center">
-      <h1 class="text-7xl font-bold text-blue-500 mb-6">Intelligence</h1>
-      <p class="text-3xl text-gray-300 mb-12">
+  <!-- Hero -->
+  <section class="min-h-screen flex items-center neural-bg pt-20 relative">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h2 class="text-6xl md:text-7xl font-bold leading-tight mb-6 fade-in">
+        Building the Nervous System<br>for <span class="text-blue-500">Decentralized Intelligence</span>
+      </h2>
+      <p class="text-2xl text-gray-300 max-w-3xl mx-auto mb-10 fade-in">
         Autonomous AI Agents on Base<br>
         Connecting intelligence • Filtering noise • Creating real signal
       </p>
-      <a href="https://x.com/nookblok" target="_blank" class="inline-block border border-white/60 hover:border-white px-12 py-6 rounded-3xl text-xl">
-        Read the Thread
+      <div class="flex flex-col sm:flex-row gap-5 justify-center fade-in">
+        <a href="https://x.com/nookblok" target="_blank" class="border border-gray-600 hover:border-white px-10 py-5 rounded-2xl text-xl font-semibold transition">
+          Read the Thread
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 Agents -->
+  <section id="agents" class="py-20 bg-zinc-950">
+    <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-4">Meet the 9 Specialized Agents</h2>
+      <p class="text-center text-gray-400 mb-12">Working together as one unified intelligent network</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="agentGrid"></div>
+    </div>
+  </section>
+
+  <!-- Features, Tokenomics, Use Cases tetap sama seperti kode kamu -->
+
+  <!-- Twitter Link Paling Bawah -->
+  <section class="py-16 text-center bg-zinc-950">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-6">Stay Updated</h2>
+      <a href="https://x.com/nookblok" target="_blank" 
+         class="inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-3xl text-xl font-semibold hover:bg-blue-500 hover:text-white transition">
+        <i class="fab fa-x-twitter text-2xl"></i>
+        Follow @nookblok on X
       </a>
     </div>
   </section>
 
-  <footer class="py-12 text-center text-gray-500">
-    © 2026 Nookblok
+  <footer class="py-12 border-t border-gray-800 text-center text-gray-500">
+    <p>© 2026 Nookblok • Building Decentralized Intelligence on Base</p>
   </footer>
 
+  <script>
+    const agents = [
+      { name: "Ciphern", role: "Coding & Smart Contract", icon: "💻", skills: ["Solidity Development", "Smart Contract Auditing", "Gas Optimization", "Web3 Integration"], code: "deployContract(params)" },
+      { name: "Quill", role: "Writing & Content", icon: "✍️", skills: ["Thread Writing", "Marketing Copy", "SEO Content", "Multilingual"], code: "generateContent(topic, tone)" },
+      { name: "Atlas", role: "Research & Analysis", icon: "🔍", skills: ["Market Research", "On-chain Analysis", "Competitor Analysis", "Trend Forecasting"], code: "deepResearch(query)" },
+      { name: "Prism", role: "Data & Strategy", icon: "📊", skills: ["Data Analysis", "Strategic Planning", "Risk Assessment", "Tokenomics Design"], code: "analyzeStrategy(data)" },
+      { name: "Forge", role: "DevOps & Infrastructure", icon: "🏗️", skills: ["CI/CD Pipeline", "Node Management", "Scalability", "Security Hardening"], code: "setupInfrastructure()" },
+      { name: "Vector", role: "Design & UI", icon: "🎨", skills: ["UI/UX Design", "Brand Identity", "Figma to Code", "Motion Design"], code: "createUI(component)" },
+      { name: "Pulse", role: "Social Media", icon: "📱", skills: ["Content Scheduling", "Community Management", "Engagement Analysis", "Viral Strategy"], code: "manageSocialCampaign()" },
+      { name: "Halo", role: "Project Management", icon: "📋", skills: ["Task Orchestration", "Timeline Control", "Team Coordination", "Progress Tracking"], code: "orchestrateProject(goals)" },
+      { name: "Nyx", role: "Creative & Security", icon: "🛡️", skills: ["Creative Direction", "Security Auditing", "Threat Detection", "Innovation"], code: "secureAndCreate(idea)" }
+    ];
+
+    const grid = document.getElementById('agentGrid');
+    agents.forEach((agent, i) => {
+      const card = document.createElement('div');
+      card.className = `agent-card bg-zinc-900 border border-blue-500/20 rounded-3xl p-8 fade-in`;
+      card.style.animationDelay = `${i * 80}ms`;
+      card.innerHTML = `
+        <div class="text-4xl mb-4">${agent.icon}</div>
+        <h3 class="text-2xl font-bold mb-1">${agent.name}</h3>
+        <p class="text-blue-400 mb-6">${agent.role}</p>
+        <div class="mb-6">
+          <p class="text-xs uppercase tracking-widest text-gray-500 mb-3">CORE SKILLS</p>
+          <ul class="space-y-2 text-sm">
+            ${agent.skills.map(skill => `<li class="flex items-center gap-2"><span class="text-green-400">→</span> ${skill}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="code-block p-4 rounded-xl text-xs text-gray-400 overflow-hidden">
+          <span class="text-blue-400">// Example</span><br>
+          ${agent.code}
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    function animateOnScroll() {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.85) {
+          el.classList.add('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', animateOnScroll);
+    window.addEventListener('load', animateOnScroll);
+  </script>
 </body>
 </html>
